@@ -1,0 +1,67 @@
+#person {
+    width: 32px;
+    height: 32px;
+    background-image: url('Pic/Front0.png');
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+@keyframes left {
+    0% {
+        background-image: url('Pic/left0.png');
+    }
+    33% {
+        background-image: url('Pic/left1.png');
+    }
+    66% {
+        background-image: url('Pic/left2.png');
+    }
+    100% {
+        background-image: url('Pic/left0.png');
+    }
+}
+
+@keyframes right {
+    0% {
+        background-image: url('Pic/right0.png');
+    }
+    33% {
+        background-image: url('Pic/right1.png');
+    }
+    66% {
+        background-image: url('Pic/right2.png');
+    }
+    100% {
+        background-image: url('Pic/right0.png');
+    }
+}
+
+@keyframes Front {
+    0% {
+        background-image: url('Pic/Front0.png');
+    }
+    33% {
+        background-image: url('Pic/Front1.png');
+    }
+    66% {
+        background-image: url('Pic/Front2.png');
+    }
+    100% {
+        background-image: url('Pic/Front0.png');
+    }
+}
+
+@keyframes Up {
+    0% {
+        background-image: url('Pic/Up0.png');
+    }
+    33% {
+        background-image: url('Pic/Up1.png');
+    }
+    66% {
+        background-image: url('Pic/Up2.png');
+    }
+    100% {
+        background-image: url('Pic/Up0.png');
+    }
+}
