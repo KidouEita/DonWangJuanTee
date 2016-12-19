@@ -1,50 +1,36 @@
-$(document).ready(function() {
+$(document).ready(function () {
+    var obstclass = ["#obst1", "#obst2", "#obst3"];
+    $('#open').click(function () {
+        $('.sidenav')[0].style.width = '250px';
+    });
+    $('.closebtn').click(function () {
+        $('.sidenav')[0].style.width = '0px';
+    });
+    $('#about').click(function () {
+        if($('#editor')[0].style.display!="none"){
+            $('#editor').fadeOut();
+        }
+        else{
+             $('#editor').fadeIn();
+        }
+    });
+    
     $('#index').keydown(keyListener);
     $('#index').keyup(keyupListener);
     var elem = $("#person")[0];
-    elem.style.top = '100px';
-    elem.style.left = '100px';
-    var canvas = $('#myCanvas')[0];
-    var ctx = canvas.getContext('2d');
-    var ctx2 = canvas.getContext('2d');
-
-    var paddleHeight = [10, 150];
-    var paddleWidth = [75, 150];
-    var paddleX = [200, 30];
-    var paddleY = [300, 100];
-    var t = [false, false];
-
-    /*
-    var paddleHeight = 10;
-    var paddleWidth = 75;
-    var paddleX = 200;
-    var paddleY = 300;
-    var paddleHeight2 = 150;
-    var paddleWidth2 = 150;
-    var paddleX2 = 30;
-    var paddleY2 = 100;
-    */
-
-
-    function Shape(x, y, w, h, fill) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.fill = fill;
+    elem.style.top = '25px';
+    elem.style.left = '25px';
+    var paddleX = [200, 30, 7];
+    var paddleY = [300, 100, 287];
+    var paddleWidth = [75, 150, 135];
+    var paddleHeight = [10, 150, 135];
+    for (var i in obstclass) {
+        $(obstclass[i])[0].style.width = paddleWidth[i] + "px";
+        $(obstclass[i])[0].style.height = paddleHeight[i] + "px";
+        $(obstclass[i])[0].style.top = paddleY[i] + "px";
+        $(obstclass[i])[0].style.left = paddleX[i] + "px";
     }
-    var obst = [];
-
-    function drawPaddle() {
-        for (var i = 0; i < paddleHeight.length; i++) obst.push(new Shape(paddleX[i], paddleY[i], paddleWidth[i], paddleHeight[i]));
-
-        for (var i in obst) {
-            oRec = obst[i];
-            ctx.fillStyle = oRec.fill;
-            ctx.fillRect(oRec.x, oRec.y, oRec.w, oRec.h);
-        }
-    }
-    drawPaddle();
+    var t = [false, false, false];
 
     function checkColli() {
         this.checkNonCollision = true;
@@ -56,110 +42,115 @@ $(document).ready(function() {
 
     function keyListener(e) {
         var rect = $("#person")[0].getBoundingClientRect();
-        for (var i in obst) t[i] = false;
+        for (var i in obstclass) t[i] = false;
         switch (e.keyCode) {
-            case 37:
-                var x = parseInt(elem.style.left, 10);
-                for (var i = 0; i < paddleHeight.length; i++) {
-                    if (rect.left <= paddleX[i] - 10 || rect.top >= paddleY[i] + paddleHeight[i] || rect.left >= paddleX[i] + paddleWidth[i] + 10 || rect.top <= paddleY[i] - 10) {
-                        t[i] = true;
-                    } else {
-                        t[i] = false;
-                    }
-                }
-
-                if (checkColli()) {
-                    var id = setInterval(frame, 0.3);
-
-                    function frame() {
-                        elem.style.animation = "left 0.3s infinite"
-                        elem.style.left = x - 2 + 'px';
-                        elem.style.backgroundImage = "url('./Source/Pic/left0.png')";
-                        clearInterval(id);
-                    }
+        case 37:
+            var x = parseInt(elem.style.left, 10);
+            for (var i = 0; i < paddleHeight.length; i++) {
+                var obstinner = $(obstclass[i])[0].getBoundingClientRect();
+                if (rect.left <= obstinner.left - 10 || rect.top >= obstinner.top + parseInt($(obstclass[i])[0].style.height, 10) || rect.left >= obstinner.left + parseInt($(obstclass[i])[0].style.width, 10) - 10 || rect.top <= obstinner.top - 10) {
+                    t[i] = true;
                 } else {
-                    var id = setInterval(frame, 0.3);
+                    t[i] = false;
+                }
+            }
+            if (checkColli()) {
+                var id = setInterval(frame, 0.3);
+
+                function frame() {
                     elem.style.animation = "left 0.3s infinite"
+                    elem.style.left = x - 2 + 'px';
                     elem.style.backgroundImage = "url('./Source/Pic/left0.png')";
                     clearInterval(id);
                 }
-                break;
-            case 38:
-                var y = parseInt(elem.style.top, 10);
-                for (var i = 0; i < paddleHeight.length; i++) {
-                    if (rect.left <= paddleX[i] - 10 || rect.top >= paddleY[i] + paddleHeight[i] +10|| rect.left >= paddleX[i] + paddleWidth[i] || rect.top <= paddleY[i] - 10) {
-                        t[i] = true;
-                    } else {
-                        t[i] = false;
-                    }
-                }
-                if (checkColli()) {
-                    var id2 = setInterval(frame2, 0.3);
-
-                    function frame2() {
-                        elem.style.animation = "Up 0.3s infinite"
-                        elem.style.top = y - 2 + 'px';
-                        elem.style.backgroundImage = "url('./Source/Pic/Up0.png')";
-                        clearInterval(id2);
-                    }
+            } else {
+                var id = setInterval(frame, 0.3);
+                elem.style.animation = "left 0.3s infinite"
+                elem.style.backgroundImage = "url('./Source/Pic/left0.png')";
+                clearInterval(id);
+            }
+            break;
+        case 38:
+            var y = parseInt(elem.style.top, 10);
+            for (var i = 0; i < paddleHeight.length; i++) {
+                var obstinner = $(obstclass[i])[0].getBoundingClientRect();
+                if (rect.left <= obstinner.left - 10 || rect.top >= obstinner.top + parseInt($(obstclass[i])[0].style.height, 10) + 10 || rect.left >= obstinner.left + parseInt($(obstclass[i])[0].style.width, 10) - 20 || rect.top <= obstinner.top - 10) {
+                    t[i] = true;
                 } else {
-                    var id2 = setInterval(frame2, 0.3);
+                    t[i] = false;
+                }
+            }
+            if (checkColli()) {
+                var id2 = setInterval(frame2, 0.3);
+
+                function frame2() {
                     elem.style.animation = "Up 0.3s infinite"
+                    elem.style.top = y - 2 + 'px';
                     elem.style.backgroundImage = "url('./Source/Pic/Up0.png')";
                     clearInterval(id2);
                 }
-                break;
-            case 39:
-                var x = parseInt(elem.style.left, 10);
-                for (var i = 0; i < paddleHeight.length; i++) {
-                    if (rect.left <= paddleX[i] - 20 || rect.top >= paddleY[i] + paddleHeight[i] || rect.left >= paddleX[i] + paddleWidth[i] || rect.top <= paddleY[i] - 10) {
-                        t[i] = true;
-                    } else {
-                        t[i] = false;
-                    }
-                }
-                if (checkColli()) {
-                    var id3 = setInterval(frame3, 0.3);
-
-                    function frame3() {
-                        elem.style.animation = "right 0.3s infinite"
-                        elem.style.left = x + 2 + 'px';
-                        elem.style.backgroundImage = "url('./Source/Pic/right0.png')";
-                        clearInterval(id3);
-                    }
+            } else {
+                var id2 = setInterval(frame2, 0.3);
+                elem.style.animation = "Up 0.3s infinite"
+                elem.style.backgroundImage = "url('./Source/Pic/Up0.png')";
+                clearInterval(id2);
+            }
+            document.getElementById("p1").innerHTML = t[0];
+            document.getElementById("p2").innerHTML = t[1];
+            break;
+        case 39:
+            var x = parseInt(elem.style.left, 10);
+            for (var i = 0; i < paddleHeight.length; i++) {
+                var obstinner = $(obstclass[i])[0].getBoundingClientRect();
+                if (rect.left <= obstinner.left - 25 || rect.top >= obstinner.top + parseInt($(obstclass[i])[0].style.height, 10) || rect.left >= obstinner.left + parseInt($(obstclass[i])[0].style.width, 10) - 20 || rect.top <= obstinner.top - 10) {
+                    t[i] = true;
                 } else {
-                    var id3 = setInterval(frame3, 0.3);
+                    t[i] = false;
+                }
+            }
+            if (checkColli()) {
+                var id3 = setInterval(frame3, 0.3);
+
+                function frame3() {
                     elem.style.animation = "right 0.3s infinite"
+                    elem.style.left = x + 2 + 'px';
                     elem.style.backgroundImage = "url('./Source/Pic/right0.png')";
                     clearInterval(id3);
                 }
-                break;
-            case 40:
-                var y = parseInt(elem.style.top, 10);
-                for (var i = 0; i < paddleHeight.length; i++) {
-                    if (rect.left <= paddleX[i] - 10 || rect.top >= paddleY[i] + paddleHeight[i] || rect.left >= paddleX[i] + paddleWidth[i]|| rect.top <= paddleY[i] - 20) {
-                        t[i] = true;
-                    } else {
-                        t[i] = false;
-                    }
-                }
-
-                if (checkColli()) {
-                    var id4 = setInterval(frame4, 0.3);
-
-                    function frame4() {
-                        elem.style.animation = "Front 0.3s infinite"
-                        elem.style.top = y + 2 + 'px';
-                        elem.style.backgroundImage = "url('./Source/Pic/Front0.png')";
-                        clearInterval(id4);
-                    }
+            } else {
+                var id3 = setInterval(frame3, 0.3);
+                elem.style.animation = "right 0.3s infinite"
+                elem.style.backgroundImage = "url('./Source/Pic/right0.png')";
+                clearInterval(id3);
+            }
+            break;
+        case 40:
+            var y = parseInt(elem.style.top, 10);
+            for (var i = 0; i < paddleHeight.length; i++) {
+                var obstinner = $(obstclass[i])[0].getBoundingClientRect();
+                if (rect.left <= obstinner.left - 10 || rect.top >= obstinner.top + parseInt($(obstclass[i])[0].style.height, 10) || rect.left >= obstinner.left + parseInt($(obstclass[i])[0].style.width, 10) - 20 || rect.top <= obstinner.top - 20) {
+                    t[i] = true;
                 } else {
-                    var id4 = setInterval(frame4, 0.3);
+                    t[i] = false;
+                }
+            }
+
+            if (checkColli()) {
+                var id4 = setInterval(frame4, 0.3);
+
+                function frame4() {
                     elem.style.animation = "Front 0.3s infinite"
+                    elem.style.top = y + 2 + 'px';
                     elem.style.backgroundImage = "url('./Source/Pic/Front0.png')";
                     clearInterval(id4);
                 }
-                break;
+            } else {
+                var id4 = setInterval(frame4, 0.3);
+                elem.style.animation = "Front 0.3s infinite"
+                elem.style.backgroundImage = "url('./Source/Pic/Front0.png')";
+                clearInterval(id4);
+            }
+            break;
         }
     }
 
