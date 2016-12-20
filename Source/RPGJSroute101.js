@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var obstclass = ["#obst1", "#obst2", "#obst3","#obst4","#obst5","#obst6","#obst7","#obst8","#obst9","#obst10","#obst11","#obst12"];
+    var obstclass = ["#obst1"];
     $('#open').click(function () {
         $('.sidenav')[0].style.width = '250px';
     });
@@ -18,19 +18,19 @@ $(document).ready(function () {
     $('#index').keydown(keyListener);
     $('#index').keyup(keyupListener);
     var elem = $("#person")[0];
-    elem.style.top = '125px';
-    elem.style.left = '90px';
-    var paddleX = [82, 225, 211,0,0,226,353,0,290,80,208,0];
-    var paddleY = [60, 59, 154,0,22,0,23,309,307,182,263,307];
-    var paddleWidth = [76, 76, 108,190,33,157,33,95,95,80,100,383];
-    var paddleHeight = [61, 61, 65,25,295,25,295,10,10,5,5,10];
+    elem.style.top = '610px';
+    elem.style.left = '202px';
+    var paddleX = [82];
+    var paddleY = [60];
+    var paddleWidth = [76];
+    var paddleHeight = [61];
     for (var i in obstclass) {
         $(obstclass[i])[0].style.width = paddleWidth[i] + "px";
         $(obstclass[i])[0].style.height = paddleHeight[i] + "px";
         $(obstclass[i])[0].style.top = paddleY[i] + "px";
         $(obstclass[i])[0].style.left = paddleX[i] + "px";
     }
-    var t = [false, false, false,false,false,false,false,false,false,false,false,false];
+    var t = [false];
 
     function checkColli() {
         this.checkNonCollision = true;

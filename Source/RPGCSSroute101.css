@@ -1,7 +1,7 @@
 #person {
     width: 28px;
     height: 28px;
-    background-image: url('Pic/Front0.png');
+    background-image: url('Pic/Up0.png');
     background-size:cover;
     background-repeat: no-repeat;
     position: absolute;
@@ -11,8 +11,8 @@
 }
 .back{
     width: 400px;
-    height: 400px;
-    background-image: url('Pic/home.bmp');
+    height: 700px;
+    background-image: url('Pic/route101.bmp');
     background-repeat: no-repeat;
     position: absolute;
     z-index: -1;
