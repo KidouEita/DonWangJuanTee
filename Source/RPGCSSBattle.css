@@ -1,0 +1,77 @@
+.grass {
+    width: 320px;
+    height: 240px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('Pic/111.bmp');
+    top: 400px;
+    left: 50px;
+    opacity: 1.1;
+    animation-name: toleft;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+.monsterchinese {
+    width: 360px;
+    height: 243px;
+    background: url('Pic/222.png');
+    background-size: cover;
+    top: 80px;
+    left: 480px;
+    animation-name: toright2;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    position: absolute;
+}
+
+.grass2 {
+    width: 320px;
+    height: 240px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('Pic/111.bmp');
+    top: 100px;
+    left: 500px;
+    animation-name: toright;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+@keyframes toleft {
+    0% {
+        left: 500px;
+    }
+    50% {
+        left: 275px;
+    }
+    100% {
+        left: 50px;
+    }
+}
+
+@keyframes toright {
+    0% {
+        left: 50px;
+    }
+    50% {
+        left: 275px;
+    }
+    100% {
+        left: 500px;
+    }
+}
+
+@keyframes toright2 {
+    0% {
+        left: 50px;
+    }
+    50% {
+        left: 265px;
+    }
+    100% {
+        left: 480px;
+    }
+}

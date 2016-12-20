@@ -1,6 +1,8 @@
 #person {
     width: 28px;
     height: 28px;
+    top = '125px';
+    left = '90px';
     background-image: url('Pic/Front0.png');
     background-size:cover;
     background-repeat: no-repeat;
@@ -20,6 +22,15 @@
     left: 0px;
 }
 .obst{
+    width: 0px;
+    height: 0px;
+    background-color:;
+    background-repeat: no-repeat;
+    position: absolute;
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+.transport{
     width: 0px;
     height: 0px;
     background-color:;
