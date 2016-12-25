@@ -13,19 +13,30 @@
     animation-timing-function: linear;
 }
 
-.monsterchinese {
-    width: 360px;
-    height: 243px;
-    background: url('Pic/222.png');
-    background-size: cover;
-    top: 80px;
-    left: 480px;
+.monster {
+    width: 168px;
+    height: 280px;
+    background: url('Pic/Chi.png');
+    background-size:cover;
+    top: 70px;
+    left: 530px;
     animation-name: toright2;
     animation-duration: 2s;
     animation-timing-function: linear;
     position: absolute;
 }
-
+.people {
+    width: 360px;
+    height: 243px;
+    background: url('Pic/people.png');
+    background-size: cover;
+    top: 340px;
+    left: 30px;
+    animation-name: toleft2;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    position: absolute;
+}
 .grass2 {
     width: 320px;
     height: 240px;
@@ -39,7 +50,21 @@
     animation-duration: 2s;
     animation-timing-function: linear;
 }
-
+.talk{
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px; 
+    width: 780px;
+    height: 150px; 
+    top:580px;
+}
+.status{
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px; 
+    width: 400px;
+    height: 150px; 
+}
 @keyframes toleft {
     0% {
         left: 500px;
@@ -49,6 +74,17 @@
     }
     100% {
         left: 50px;
+    }
+}
+@keyframes toleft2 {
+    0% {
+        left: 500px;
+    }
+    50% {
+        left: 265px;
+    }
+    100% {
+        left: 30px;
     }
 }
 
@@ -74,4 +110,40 @@
     100% {
         left: 480px;
     }
+}
+.progress {
+    height: 25px;
+    background: linear-gradient(to right, #2c3b4e, #4a688a, #2c3b4e);
+    padding: 3px;
+    margin-top:70px;
+    overflow: visible;
+    border-radius: 20px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #7992a8;
+    position: relative
+}
+
+.progress .progress-bar {
+    border-radius: 20px;
+    position: relative;
+    animation: animate-positive 2s;
+    background-color: chartreuse;
+}
+
+.progress-bar.active {
+    animation: reverse progress-bar-stripes 0.40s linear infinite, animate-positive 2s;
+}
+
+@keyframes animate-positive {
+    0% {
+        width: 0;
+    }
+}
+
+.btn {
+    background-color:deepskyblue;
+    border-radius: 10px;
+}
+.btn:hover {
+    background-color:aqua;
 }

@@ -3,14 +3,43 @@
 
 <head>
     <title>JuanTi</title>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="./Source/RPGCSSBattle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./Source/bootstrap.min.css">
     <script src="./Source/RPGJSBattle.js"></script>
 </head>
-<body id='index'class='body'>
+
+<body id='index' class='body'>
     <div style="position:absolute" class="grass"></div>
     <div style="position:absolute" class="grass2"></div>
-    <div style="position:absolute" class="monsterchinese"></div>
+    <div style="position:absolute" class="monster"></div>
+    <div style="position:absolute" class="people"></div>
+    <div style="position:absolute" class="talk">
+        <div class=queTitle id=Que>Question</div>
+        <input type=button id=A value="A" class=btn>
+        <input type=button id=B value="B" class=btn>
+        <input type=button id=C value="C" class=btn>
+        <input type=button id=D value="D" class=btn>
+    </div>
+    <div style="position:absolute" class="status" id="status1">
+        <div style="clear:both;">
+            <span id=monsterName>國文課本</span>
+            <div class="progress" id="progess1">
+                <div class="progress-bar progress-bar-success progress-bar-striped active" id="progress-bar1"> </div>
+            </div>
+        </div>
+    </div>
+    <div style="position:absolute" class="status" id="status2">
+        <div style="clear:both;">
+            <span id=userName>你的名字</span>
+            <div class="progress" id="progess2">
+                <div class="progress-bar progress-bar-success progress-bar-striped active" id="progress-bar2"> </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id=gameOver style="position:absolute;"></div>
 </body>
 
 </html>
