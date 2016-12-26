@@ -1,9 +1,12 @@
 var menuOn;
 
 $(document).ready(function () {
+    var ChineseScore1;
+    var ScienceScore1;
+    var MathScore1;
     window.scrollTo(0, 700);
     var obstclass = ["#obst1", "#obst2", "#obst3", "#obst4", "#obst5", "#obst6", "#obst7", "#obst8", "#obst9", "#obst10", "#slope1", "#slope2", "#slope3", "#slope4", "#slope5", "#slope6", "#slope7", "#slope8", "#slope9", "#slope10"];
-    var grassclass = ["#grass1", "#grass2", "#grass3"];
+    var grassclass = ["#grass1", "#grass2", "#grass3","#grass4","#grass5","#grass6","#grass7","#grass8"];
     /** Slope numbered from bottom to top,from left to right */
     var transport = ["#trans1"];
     $('.progress')[0].style.top = "640px";
@@ -21,6 +24,13 @@ $(document).ready(function () {
             $('#editor').fadeIn();
         }
     });
+    $('#State').click(function () {
+        if ($('#State2')[0].style.display != "none") {
+            $('#State2').fadeOut();
+        } else {
+            $('#State2').fadeIn();
+        }
+    });
     $('#index').keydown(keyListener);
     $('#index').keyup(keyupListener);
     var elem = $("#person")[0];
@@ -28,12 +38,18 @@ $(document).ready(function () {
     if (!localStorage.getItem("route101Xproperty")) {
         elem.style.left = localStorage.getItem("RPG1Xproperty");
         elem.style.top = '610px';
+        ChineseScore1=localStorage.getItem("ChineseScore");
+        ScienceScore1=localStorage.getItem("ScienceScore");
+        MathScore1=localStorage.getItem("MathScore");
     } else {
         elem.style.left = localStorage.getItem("route101Xproperty");
         elem.style.top =
             localStorage.getItem("route101Yproperty");
         Score = localStorage.getItem("Health");
         elem.style.backgroundImage = localStorage.getItem("face");
+        ChineseScore1=localStorage.getItem("ChineseScore");
+        ScienceScore1=localStorage.getItem("ScienceScore");
+        MathScore1=localStorage.getItem("MathScore");
     }
     var Health1 = localStorage.getItem("Health");
     var elemx = parseInt($("#person")[0].style.left, 10);
@@ -43,6 +59,9 @@ $(document).ready(function () {
     $('.progress')[0].style.width = "25px";
     $('.progress')[0].style.height = "5px";
     $('.progress-bar')[0].style.width = Health1 + "%";
+    $('#p1').text("國文分數："+ChineseScore1);
+    $('#p2').text("數學分數："+MathScore1);
+    $('#p3').text("自然分數："+ScienceScore1);
     var paddleX = [20, 35, 355, 230, 20, 225, 23, 160, 131, 20, //obst
                   30, 145, 285, 30, 83, 178, 60, 30, 30, 155]; //slope
     var paddleY = [18, 584, 10, 584, 1, 1, 230, 230, 54, 390, //obst
@@ -55,10 +74,10 @@ $(document).ready(function () {
     var transY = [627];
     var transWidth = [35];
     var transHeight = [10];
-    var grassX = [191, 271, 240];
-    var grassY = [560, 514, 544];
-    var grassWidth = [30, 79, 80];
-    var grassHeight = [80, 25, 30];
+    var grassX = [191, 271, 240,32,64,192,256,160];
+    var grassY = [560, 514, 544,544,512,384,209,96];
+    var grassWidth = [30, 79, 80,114,111,96,96,195];
+    var grassHeight = [80, 25, 30,30,30,77,77,77];
     for (var i in transport) {
         $(transport[i])[0].style.width = transWidth[i] + "px";
         $(transport[i])[0].style.height = transHeight[i] + "px";
@@ -80,7 +99,7 @@ $(document).ready(function () {
     var t = [false, false, false, false, false, false, false, false, false, false, //obst
              false, false, false, false, false, false, false, false, false, false]; //slope
     var ts = [false];
-    var tg = [false, false, false];
+    var tg = [false, false, false,false,false,false,false,false];
 
     function checkColli() {
         this.checkNonCollision = true;
@@ -146,6 +165,9 @@ $(document).ready(function () {
                         localStorage.setItem("route101Xproperty", elem.style.left);
                         localStorage.setItem("route101Yproperty", elem.style.top);
                         localStorage.setItem("Health", Health1);
+                        localStorage.setItem("ChineseScore",ChineseScore1);
+                        localStorage.setItem("ScienceScore",ScienceScore1);
+                        localStorage.setItem("MathScore",MathScore1);
                     }
                 }
             }
@@ -195,6 +217,9 @@ $(document).ready(function () {
                         localStorage.setItem("route101Xproperty", elem.style.left);
                         localStorage.setItem("route101Yproperty", elem.style.top);
                         localStorage.setItem("Health", Health1);
+                        localStorage.setItem("ChineseScore",ChineseScore1);
+                        localStorage.setItem("ScienceScore",ScienceScore1);
+                        localStorage.setItem("MathScore",MathScore1);
                     }
                 }
             }
@@ -241,6 +266,9 @@ $(document).ready(function () {
                         localStorage.setItem("route101Xproperty", elem.style.left);
                         localStorage.setItem("route101Yproperty", elem.style.top);
                         localStorage.setItem("Health", Health1);
+                        localStorage.setItem("ChineseScore",ChineseScore1);
+                        localStorage.setItem("ScienceScore",ScienceScore1);
+                        localStorage.setItem("MathScore",MathScore1);
                     }
                 }
             }
@@ -304,6 +332,9 @@ $(document).ready(function () {
                         localStorage.setItem("route101Xproperty", elem.style.left);
                         localStorage.setItem("route101Yproperty", elem.style.top);
                         localStorage.setItem("Health", Health1);
+                        localStorage.setItem("ChineseScore",ChineseScore1);
+                        localStorage.setItem("ScienceScore",ScienceScore1);
+                        localStorage.setItem("MathScore",MathScore1);
                     }
                 }
             }
