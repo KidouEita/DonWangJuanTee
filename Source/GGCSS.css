@@ -1,0 +1,20 @@
+
+.back {
+    width: 1000px;
+    height: 1000px;
+    background-image: url('Pic/gg.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50px;
+    left: 180px;
+    animation-name: left;
+    animation-duration: 4s;
+    zoom:200%;
+}
+
+
+
+@keyframes left {
+    from{top:0px;}
+    to{top:50px;}
+}

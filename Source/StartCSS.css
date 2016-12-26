@@ -1,0 +1,58 @@
+
+.back {
+    width: 1000px;
+    height: 1000px;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: -1;
+    top: 50px;
+    left: 200px;
+    animation-name: left;
+    animation-duration: 4s;
+    zoom:200%;
+}
+
+
+
+@keyframes left {
+    from{top:0px;}
+    to{top:50px;}
+}
+@keyframes left2 {
+    from{top:0px;}
+    to{top:100px;}
+}
+
+.progress {
+    width:200px;
+    height: 200px;
+    background: linear-gradient(to right, #2c3b4e, #4a688a, #2c3b4e);
+    padding: 10px;
+    border-radius: 6px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #7992a8;
+    position: absolute;
+    top:100px;
+    left:200px;
+    animation-name: left2;
+    animation-duration: 4s;
+    zoom:200%;
+}
+
+.progress .progress-bar {
+    border-radius: 5px;
+    height:15px;
+    position: relative;
+    margin-top:-7px;
+    animation: left3 2s;
+}
+
+.progress-bar.active {
+    animation: reverse progress-bar-stripes 0.40s linear infinite, left3 4s;
+}
+
+@keyframes left3 {
+    0% {
+        width: 0;
+    }
+}

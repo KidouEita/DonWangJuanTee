@@ -3,6 +3,9 @@ var menuOn = false;
 
 $(document).ready(function () {
     var Health1;
+    var ChineseScore1=0;
+    var ScienceScore1=0;
+    var MathScore1=0;
     var obstclass = ["#obst1", "#obst2", "#obst3", "#obst4", "#obst5", "#obst6", "#obst7", "#obst8", "#obst9", "#obst10", "#obst11", "#obst12"];
     var transport = ["#trans1"];
     $('#about').click(function () {
@@ -10,6 +13,13 @@ $(document).ready(function () {
             $('#editor').fadeOut();
         } else {
             $('#editor').fadeIn();
+        }
+    });
+    $('#State').click(function () {
+        if ($('#State2')[0].style.display != "none") {
+            $('#State2').fadeOut();
+        } else {
+            $('#State2').fadeIn();
         }
     });
 
@@ -21,9 +31,15 @@ $(document).ready(function () {
         elem.style.left = 90 + "px";
         elem.style.top = 125 + "px";
         var Health1 = 100;
+        ChineseScore1=0;
+        ScienceScore1=0;
+        MathScore1=0;
     } else {
         elem.style.left = localStorage.getItem("RPG1Xproperty");
         elem.style.top = localStorage.getItem("RPG1Yproperty");
+        ChineseScore1=localStorage.getItem("ChineseScore");
+        ScienceScore1=localStorage.getItem("ScienceScore");
+        MathScore1=localStorage.getItem("MathScore");
     }
     if (!localStorage.getItem("Health")) {
         localStorage.setItem("Health", Health1);
@@ -38,7 +54,9 @@ $(document).ready(function () {
     $('.progress')[0].style.width = "25px";
     $('.progress')[0].style.height = "5px";
     $('.progress-bar')[0].style.width = Health1 + "%";
-
+    $('#p1').text("國文分數："+ChineseScore1);
+    $('#p2').text("數學分數："+MathScore1);
+    $('#p3').text("自然分數："+ScienceScore1);
     var paddleX = [82, 225, 211, 0, 0, 226, 353, 0, 290, 80, 208, 0];
     var paddleY = [60, 59, 154, 0, 22, 0, 23, 309, 307, 182, 263, 307];
     var paddleWidth = [76, 76, 108, 190, 33, 157, 33, 95, 95, 80, 100, 383];
@@ -148,6 +166,9 @@ $(document).ready(function () {
                         localStorage.setItem("RPG1Xproperty", elem.style.left);
                         localStorage.setItem("RPG1Yproperty", "10px");
                         localStorage.setItem("Health", Health1);
+                        localStorage.setItem("ChineseScore",ChineseScore1);
+                        localStorage.setItem("ScienceScore",ScienceScore1);
+                        localStorage.setItem("MathScore",MathScore1);
                     }
                 } else {
                     var id2 = setInterval(frame2, 0.3);
