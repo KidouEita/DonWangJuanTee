@@ -6,6 +6,7 @@ $(document).ready(function () {
     $(".progress").addClass('left').bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function (e) {
         Enter = true;
         $('.progress-bar')[0].style.width = 100 + "%";
+        $('.glyphicon').fadeIn();
     });
     if (!localStorage.getItem("WindowNow")) {
         Page="RPG1.html";
