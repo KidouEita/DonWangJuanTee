@@ -1,5 +1,8 @@
 var menuOn = false;
-
+window.onbeforeunload=
+function(){
+    localStorage.setItem("WindowNow",window.location.pathname.split("/").slice(-1));
+    }
 
 $(document).ready(function () {
     var Health1;

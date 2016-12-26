@@ -1,5 +1,8 @@
 var menuOn;
-
+window.onbeforeunload=
+function(){
+        localStorage.setItem("WindowNow",window.location.pathname.split("/").slice(-1));
+    }
 $(document).ready(function () {
     var ChineseScore1;
     var ScienceScore1;
@@ -340,8 +343,7 @@ $(document).ready(function () {
             }
             break;
         case 27:
-            localStorage.removeItem("route101Xproperty");
-            localStorage.removeItem("route101Yproperty");
+            localStorage.clear();
             break;
         case 81: //Q
             if ($('.sidenav')[0].style.width == "250px") {
